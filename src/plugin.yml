@@ -1,0 +1,7 @@
+main: com.fpghoti.classicswords.ClassicSwordsMain
+version: BETA-0.1
+name: ClassicSwords
+descripion: Bring back the old combat!
+commands:
+  CSword:
+    description: Spawns a CSword
