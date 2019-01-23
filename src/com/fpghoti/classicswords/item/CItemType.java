@@ -5,7 +5,7 @@ import org.bukkit.inventory.ItemStack;
 
 import com.fpghoti.classicswords.util.Storage;
 
-import net.minecraft.server.v1_12_R1.NBTTagCompound;
+import net.minecraft.server.v1_13_R2.NBTTagCompound;
 
 public class CItemType {
 
@@ -136,7 +136,7 @@ public class CItemType {
 	public static Material getMaterial(SwordType type) {
 		switch (type) {
 		case WOOD:
-			return Material.WOOD_SWORD;
+			return Material.WOODEN_SWORD;
 
 		case STONE:
 			return Material.STONE_SWORD;
@@ -145,7 +145,7 @@ public class CItemType {
 			return Material.IRON_SWORD;
 			
 		case GOLD:
-			return Material.GOLD_SWORD;
+			return Material.GOLDEN_SWORD;
 			
 		case DIAMOND:
 			return Material.DIAMOND_SWORD;
@@ -163,7 +163,7 @@ public class CItemType {
 	
 	public static SwordType getSwordType(Material mat) {
 		switch (mat) {
-		case WOOD_SWORD:
+		case WOODEN_SWORD:
 			return SwordType.WOOD;
 
 		case STONE_SWORD:
@@ -172,7 +172,7 @@ public class CItemType {
 		case IRON_SWORD: 
 			return SwordType.IRON;
 			
-		case GOLD_SWORD:
+		case GOLDEN_SWORD:
 			return SwordType.GOLD;
 			
 		case DIAMOND_SWORD:
@@ -188,7 +188,7 @@ public class CItemType {
 	
 	
 	public static Boolean isSword(Material mat) {
-		return mat == Material.WOOD_SWORD || mat == Material.STONE_SWORD || mat == Material.IRON_SWORD || mat == Material.GOLD_SWORD || mat == Material.DIAMOND_SWORD;
+		return mat == Material.WOODEN_SWORD || mat == Material.STONE_SWORD || mat == Material.IRON_SWORD || mat == Material.GOLDEN_SWORD || mat == Material.DIAMOND_SWORD;
 	}
 	
 	

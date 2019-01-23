@@ -108,7 +108,7 @@ public class SwingEvent implements Listener{
 				if(Storage.swingers.contains(p) && ClassicSword.isCShield(p.getInventory().getItemInMainHand())) {
 					p.getInventory().setItemInMainHand(ClassicSword.toBlockShield(p.getInventory().getItemInMainHand(), CItemType.getType(ClassicSword.getCShieldShortName(p.getInventory().getItemInMainHand()))));
 					//p.playSound(p.getLocation(), Sound.ENTITY_IRONGOLEM_STEP, 10.0F, 1.0F);
-					p.playSound(p.getLocation(), Sound.ENTITY_IRONGOLEM_STEP, 10.0F, 1.0F);
+					p.playSound(p.getLocation(), Sound.ENTITY_IRON_GOLEM_STEP, 10.0F, 1.0F);
 					
 					if(Storage.recent.containsKey(p)) {
 						final Player damaged = Storage.recent.get(p);
@@ -177,20 +177,20 @@ public class SwingEvent implements Listener{
 							}, 14L);
 							
 							
-							p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BELL, 1.0F, 1.4F);
+							p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BELL, 1.0F, 1.4F);
 							Storage.perfect.remove(p);
 							Storage.great.remove(p);
 							Storage.kb.add(damaged);
 							ClassicSwordsMain.runKB(damaged);
 						}else if(Storage.great.contains(p)) {
 							ClassicSword.sendActionbar(p, "§eGreat!");
-							p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BELL, 1.0F, 1.2F);
+							p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BELL, 1.0F, 1.2F);
 							Storage.perfect.add(p);
 							Storage.kb.add(damaged);
 							ClassicSwordsMain.runKB(damaged);
 						}else {	
 							ClassicSword.sendActionbar(p, "§cGood!");
-							p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BELL, 1.0F, 1.0F);
+							p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BELL, 1.0F, 1.0F);
 							ClassicSwordsMain.streakTimer(p);
 							Storage.great.add(p);
 							Storage.kb.add(damaged);

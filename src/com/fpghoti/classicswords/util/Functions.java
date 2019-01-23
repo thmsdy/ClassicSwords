@@ -12,6 +12,12 @@ public class Functions {
 		Player p = Bukkit.getPlayer(id);
 		return p;
 	}
+	
+	public Boolean cModeEnabled(Player p) {
+		Boolean enabled = false;
+		//TO DO Work on resource pack detection
+		return enabled;
+	}
 
 	public static Player getEP(String playername){
 		Player p = null;

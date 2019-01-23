@@ -6,7 +6,7 @@ import java.util.Random;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
-import org.bukkit.craftbukkit.v1_12_R1.inventory.CraftItemStack;
+import org.bukkit.craftbukkit.v1_13_R2.inventory.CraftItemStack;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
@@ -17,11 +17,11 @@ import org.bukkit.inventory.meta.ItemMeta;
 import com.fpghoti.classicswords.item.CItemType.SwordType;
 import com.fpghoti.classicswords.util.Storage;
 
-import net.minecraft.server.v1_12_R1.NBTTagCompound;
-import net.minecraft.server.v1_12_R1.NBTTagDouble;
-import net.minecraft.server.v1_12_R1.NBTTagInt;
-import net.minecraft.server.v1_12_R1.NBTTagList;
-import net.minecraft.server.v1_12_R1.NBTTagString;
+import net.minecraft.server.v1_13_R2.NBTTagCompound;
+import net.minecraft.server.v1_13_R2.NBTTagDouble;
+import net.minecraft.server.v1_13_R2.NBTTagInt;
+import net.minecraft.server.v1_13_R2.NBTTagList;
+import net.minecraft.server.v1_13_R2.NBTTagString;
 
 public class ClassicSword {
 
@@ -49,7 +49,7 @@ public class ClassicSword {
 		meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
 		meta.setDisplayName(name);
 		csword.setItemMeta(meta);
-		net.minecraft.server.v1_12_R1.ItemStack nmsStack = CraftItemStack.asNMSCopy(csword);
+		net.minecraft.server.v1_13_R2.ItemStack nmsStack = CraftItemStack.asNMSCopy(csword);
 		NBTTagCompound compound = (nmsStack.hasTag()) ? nmsStack.getTag() : new NBTTagCompound();
 		NBTTagList modifiers = new NBTTagList();
 		NBTTagCompound damage = CItemType.getSwordType(type);
@@ -109,7 +109,7 @@ public class ClassicSword {
 			meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
 			meta.setDisplayName(name);
 			csword.setItemMeta(meta);
-			net.minecraft.server.v1_12_R1.ItemStack nmsStack = CraftItemStack.asNMSCopy(csword);
+			net.minecraft.server.v1_13_R2.ItemStack nmsStack = CraftItemStack.asNMSCopy(csword);
 			NBTTagCompound compound = (nmsStack.hasTag()) ? nmsStack.getTag() : new NBTTagCompound();
 			NBTTagList modifiers = new NBTTagList();
 			NBTTagCompound damage = CItemType.getSwordType(type);
@@ -178,7 +178,7 @@ public class ClassicSword {
 			meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
 			meta.setDisplayName(name);
 			csword.setItemMeta(meta);
-			net.minecraft.server.v1_12_R1.ItemStack nmsStack = CraftItemStack.asNMSCopy(csword);
+			net.minecraft.server.v1_13_R2.ItemStack nmsStack = CraftItemStack.asNMSCopy(csword);
 			NBTTagCompound compound = (nmsStack.hasTag()) ? nmsStack.getTag() : new NBTTagCompound();
 			NBTTagList modifiers = new NBTTagList();
 			NBTTagCompound damage = CItemType.getSwordType(type);
@@ -243,7 +243,7 @@ public class ClassicSword {
 		meta.setUnbreakable(false);
 		meta.setDisplayName(name);
 		csword.setItemMeta(meta);
-		net.minecraft.server.v1_12_R1.ItemStack nmsStack = CraftItemStack.asNMSCopy(csword);
+		net.minecraft.server.v1_13_R2.ItemStack nmsStack = CraftItemStack.asNMSCopy(csword);
 		NBTTagCompound compound = (nmsStack.hasTag()) ? nmsStack.getTag() : new NBTTagCompound();
 		NBTTagList modifiers = new NBTTagList();
 		NBTTagCompound damage = CItemType.getSwordType(type);
@@ -280,7 +280,7 @@ public class ClassicSword {
 		if(item.getType() != Material.SHIELD) {
 			return false;
 		}
-		net.minecraft.server.v1_12_R1.ItemStack nms = CraftItemStack.asNMSCopy(item);
+		net.minecraft.server.v1_13_R2.ItemStack nms = CraftItemStack.asNMSCopy(item);
 		if(!nms.hasTag() || nms.getTag() == null) {
 			return false;
 		}
@@ -292,7 +292,7 @@ public class ClassicSword {
 	}
 
 	public static Boolean isCBlockShield(ItemStack item) {
-		net.minecraft.server.v1_12_R1.ItemStack nms = CraftItemStack.asNMSCopy(item);
+		net.minecraft.server.v1_13_R2.ItemStack nms = CraftItemStack.asNMSCopy(item);
 		return nms.getTag() != null && isCShield(item) && nms.getTag().hasKey("ClassicSwords");
 	}
 
@@ -301,10 +301,10 @@ public class ClassicSword {
 	}
 
 	public static Boolean isCSword(ItemStack item) {
-		if(!(item.getType() == Material.WOOD_SWORD || item.getType() == Material.STONE_SWORD ||item.getType() == Material.IRON_SWORD || item.getType() == Material.GOLD_SWORD || item.getType() == Material.DIAMOND_SWORD)) {
+		if(!(item.getType() == Material.WOODEN_SWORD || item.getType() == Material.STONE_SWORD ||item.getType() == Material.IRON_SWORD || item.getType() == Material.GOLDEN_SWORD || item.getType() == Material.DIAMOND_SWORD)) {
 			return false;
 		}
-		net.minecraft.server.v1_12_R1.ItemStack nms = CraftItemStack.asNMSCopy(item);
+		net.minecraft.server.v1_13_R2.ItemStack nms = CraftItemStack.asNMSCopy(item);
 		if(!nms.hasTag() || nms.getTag() == null) {
 			return false;
 		}
@@ -398,7 +398,7 @@ public class ClassicSword {
 		if(!isCItem(item)) {
 			return null;
 		}else {
-			net.minecraft.server.v1_12_R1.ItemStack nms = CraftItemStack.asNMSCopy(item);
+			net.minecraft.server.v1_13_R2.ItemStack nms = CraftItemStack.asNMSCopy(item);
 			NBTTagCompound cstag = (NBTTagCompound) nms.getTag().get("ClassicSwords");
 			return cstag;
 		}
@@ -406,7 +406,7 @@ public class ClassicSword {
 
 	public static ItemStack updateCSTag(ItemStack item, NBTTagCompound tag) {
 		if(isCItem(item)) {
-			net.minecraft.server.v1_12_R1.ItemStack nms = CraftItemStack.asNMSCopy(item);
+			net.minecraft.server.v1_13_R2.ItemStack nms = CraftItemStack.asNMSCopy(item);
 			nms.getTag().set("ClassicSwords", tag);
 			return CraftItemStack.asBukkitCopy(nms);
 		}else {

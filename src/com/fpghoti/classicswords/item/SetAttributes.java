@@ -2,9 +2,9 @@ package com.fpghoti.classicswords.item;
 
 import com.fpghoti.classicswords.util.Storage;
 
-import net.minecraft.server.v1_12_R1.NBTTagCompound;
-import net.minecraft.server.v1_12_R1.NBTTagInt;
-import net.minecraft.server.v1_12_R1.NBTTagString;
+import net.minecraft.server.v1_13_R2.NBTTagCompound;
+import net.minecraft.server.v1_13_R2.NBTTagInt;
+import net.minecraft.server.v1_13_R2.NBTTagString;
 
 public class SetAttributes {
 
