@@ -3,7 +3,7 @@
    <modelVersion>4.0.0</modelVersion>
    <groupId>me.ghotimayo</groupId>
    <artifactId>ClassicSwords</artifactId>
-   <version>BETA-0.1</version>
+   <version>BETA-1.0</version>
    <name>ClassicSwords</name>
    <description>Old combat for new minecraft</description>
    <properties>

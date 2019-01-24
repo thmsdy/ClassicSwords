@@ -1,7 +1,6 @@
 package com.fpghoti.classicswords.item;
 
 import org.bukkit.Material;
-import org.bukkit.inventory.ItemStack;
 
 import com.fpghoti.classicswords.util.Storage;
 

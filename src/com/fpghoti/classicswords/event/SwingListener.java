@@ -1,12 +1,8 @@
 package com.fpghoti.classicswords.event;
 
-import java.util.Map;
-
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
-import org.bukkit.Material;
 import org.bukkit.Sound;
-import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -17,19 +13,17 @@ import org.bukkit.event.block.BlockDamageEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.util.Vector;
 
 import com.fpghoti.classicswords.ClassicSwordsMain;
-import com.fpghoti.classicswords.item.CItem;
 import com.fpghoti.classicswords.item.CItemType;
 import com.fpghoti.classicswords.item.ClassicSword;
 import com.fpghoti.classicswords.util.Storage;
 
-public class SwingEvent implements Listener{
+public class SwingListener implements Listener{
 
 	private ClassicSwordsMain plugin;
 
-	public SwingEvent(ClassicSwordsMain plugin) {
+	public SwingListener(ClassicSwordsMain plugin) {
 		this.plugin = plugin;
 	}
 

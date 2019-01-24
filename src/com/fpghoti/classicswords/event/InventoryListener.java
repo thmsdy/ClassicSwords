@@ -14,18 +14,11 @@ import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.ItemStack;
 
-import com.fpghoti.classicswords.ClassicSwordsMain;
 import com.fpghoti.classicswords.item.CItemType;
 import com.fpghoti.classicswords.item.ClassicSword;
 import com.fpghoti.classicswords.util.Storage;
 
-public class InventoryEvent implements Listener{
-
-	private ClassicSwordsMain plugin;
-
-	public InventoryEvent(ClassicSwordsMain plugin) {
-		this.plugin = plugin;
-	}
+public class InventoryListener implements Listener{
 
 	@EventHandler
 	public void onInvOpen(InventoryOpenEvent event){

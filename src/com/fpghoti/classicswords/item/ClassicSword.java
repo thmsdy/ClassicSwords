@@ -1,7 +1,6 @@
 package com.fpghoti.classicswords.item;
 
 import java.lang.reflect.Constructor;
-import java.util.Random;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -12,6 +11,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.Damageable;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import com.fpghoti.classicswords.item.CItemType.SwordType;
@@ -29,8 +29,11 @@ public class ClassicSword {
 
 		String name;
 
-		ItemStack csword = new ItemStack(Material.SHIELD, 1, CItemType.getSwordModel(type));
+		ItemStack csword = new ItemStack(Material.SHIELD, 1);
+		
 		ItemMeta meta = csword.getItemMeta();
+		((Damageable)meta).setDamage(CItemType.getSwordModel(type));
+		
 		if(old.hasItemMeta()) {
 			ItemMeta ometa = old.getItemMeta();
 			if(ometa.hasDisplayName()) {
@@ -66,7 +69,9 @@ public class ClassicSword {
 
 		NBTTagCompound cstag = new NBTTagCompound();
 
-		int dur = old.getType().getMaxDurability() - old.getDurability();
+		//int dur = old.getType().getMaxDurability() - old.getDurability();
+		int dur = old.getType().getMaxDurability() - ((Damageable)old.getItemMeta()).getDamage();
+		
 		cstag.set("Durability", new NBTTagInt(dur));
 		cstag.set("Type", new NBTTagString(CItemType.getShortName(type)));
 
@@ -88,9 +93,11 @@ public class ClassicSword {
 		if(isCShield(old)) {
 			String name;
 
-			ItemStack csword = new ItemStack(Material.SHIELD, 1, CItemType.getSwordBlockModel(type));
+			ItemStack csword = new ItemStack(Material.SHIELD, 1);
 
 			ItemMeta meta = csword.getItemMeta();
+			((Damageable)meta).setDamage(CItemType.getSwordBlockModel(type));
+			
 			if(old.hasItemMeta()) {
 				ItemMeta ometa = old.getItemMeta();
 				if(ometa.hasDisplayName()) {
@@ -157,9 +164,11 @@ public class ClassicSword {
 
 			String name;
 
-			ItemStack csword = new ItemStack(Material.SHIELD, 1, CItemType.getSwordModel(type));
+			ItemStack csword = new ItemStack(Material.SHIELD, 1);
 
-			ItemMeta meta = csword.getItemMeta();
+			ItemMeta meta = csword.getItemMeta();	
+			((Damageable)meta).setDamage(CItemType.getSwordModel(type));
+			
 			if(old.hasItemMeta()) {
 				ItemMeta ometa = old.getItemMeta();
 				if(ometa.hasDisplayName()) {
@@ -268,7 +277,8 @@ public class ClassicSword {
 		nmsStack.setTag(compound);
 		csword = CraftItemStack.asBukkitCopy(nmsStack);
 
-		csword.setDurability((short)(csword.getType().getMaxDurability() - (short)((int)getCShieldDurability(old))));
+		//csword.setDurability((short)(csword.getType().getMaxDurability() - (short)((int)getCShieldDurability(old))));
+		((Damageable)csword.getItemMeta()).setDamage(csword.getType().getMaxDurability() - ((int)getCShieldDurability(old)));
 
 		return csword;
 	}

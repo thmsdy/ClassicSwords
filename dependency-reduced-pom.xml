@@ -4,7 +4,7 @@
   <groupId>me.ghotimayo</groupId>
   <artifactId>ClassicSwords</artifactId>
   <name>ClassicSwords</name>
-  <version>BETA-0.1</version>
+  <version>BETA-1.0</version>
   <description>Old combat for new minecraft</description>
   <build>
     <plugins>
@@ -46,7 +46,7 @@
     <dependency>
       <groupId>org.spigotmc</groupId>
       <artifactId>spigot-api</artifactId>
-      <version>1.12-R0.1-SNAPSHOT</version>
+      <version>1.13.2-R0.1-SNAPSHOT</version>
       <scope>provided</scope>
       <exclusions>
         <exclusion>
@@ -58,13 +58,13 @@
     <dependency>
       <groupId>org.bukkit</groupId>
       <artifactId>craftbukkit</artifactId>
-      <version>1.12.2-R0.1-SNAPSHOT</version>
+      <version>1.13.2-R0.1-SNAPSHOT</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.bukkit</groupId>
       <artifactId>bukkit</artifactId>
-      <version>1.12.2-R0.1-SNAPSHOT</version>
+      <version>1.13.2-R0.1-SNAPSHOT</version>
       <scope>compile</scope>
     </dependency>
     <dependency>

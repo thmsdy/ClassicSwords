@@ -1,12 +1,7 @@
 package com.fpghoti.classicswords.event;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
-
 import org.bukkit.Bukkit;
 import org.bukkit.attribute.Attribute;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -17,11 +12,11 @@ import org.bukkit.event.entity.EntityRegainHealthEvent;
 import com.fpghoti.classicswords.ClassicSwordsMain;
 import com.fpghoti.classicswords.util.Storage;
 
-public class RegenEvent implements Listener{
+public class RegenListener implements Listener{
 
 	private ClassicSwordsMain plugin;
 
-	public RegenEvent(ClassicSwordsMain plugin) {
+	public RegenListener(ClassicSwordsMain plugin) {
 		this.plugin = plugin;
 	}
 

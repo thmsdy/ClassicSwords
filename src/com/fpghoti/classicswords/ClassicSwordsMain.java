@@ -1,10 +1,6 @@
 package com.fpghoti.classicswords;
 
-import java.util.ArrayList;
-
 import org.bukkit.Bukkit;
-import org.bukkit.OfflinePlayer;
-import org.bukkit.Sound;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -13,11 +9,11 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import com.fpghoti.classicswords.commands.CSword;
-import com.fpghoti.classicswords.event.BlockingEvent;
-import com.fpghoti.classicswords.event.InventoryEvent;
-import com.fpghoti.classicswords.event.RegenEvent;
-import com.fpghoti.classicswords.event.SwingEvent;
+import com.fpghoti.classicswords.commands.CSwordCommand;
+import com.fpghoti.classicswords.event.BlockingListener;
+import com.fpghoti.classicswords.event.InventoryListener;
+import com.fpghoti.classicswords.event.RegenListener;
+import com.fpghoti.classicswords.event.SwingListener;
 import com.fpghoti.classicswords.item.CItemType;
 import com.fpghoti.classicswords.item.ClassicSword;
 import com.fpghoti.classicswords.item.SetAttributes;
@@ -30,7 +26,7 @@ public class ClassicSwordsMain extends JavaPlugin{
 		plugin = this;
 		SetAttributes.defineSwords();
 		registerEvents();
-		getCommand("CSword").setExecutor(new CSword(this));
+		getCommand("CSword").setExecutor(new CSwordCommand());
 		registerConfig();	
 		messageSet();
 		startItemCheck();
@@ -61,11 +57,11 @@ public class ClassicSwordsMain extends JavaPlugin{
 	}
 	public void registerEvents(){
 		PluginManager pm = getServer().getPluginManager();
-		pm.registerEvents(new SwingEvent(this), this);
-		InventoryEvent ie = new InventoryEvent(this);
+		pm.registerEvents(new SwingListener(this), this);
+		InventoryListener ie = new InventoryListener();
 		pm.registerEvents(ie, this);
-		pm.registerEvents(new BlockingEvent(this), this);
-		pm.registerEvents(new RegenEvent(this), this);
+		pm.registerEvents(new BlockingListener(), this);
+		pm.registerEvents(new RegenListener(this), this);
 	}
 	FileConfiguration config = this.getConfig();
 
