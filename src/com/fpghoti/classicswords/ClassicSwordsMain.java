@@ -19,6 +19,8 @@ import com.fpghoti.classicswords.item.ClassicSword;
 import com.fpghoti.classicswords.item.SetAttributes;
 import com.fpghoti.classicswords.util.Storage;
 
+/** For 1.13 */
+
 public class ClassicSwordsMain extends JavaPlugin{
 	private static ClassicSwordsMain plugin;
 
@@ -30,7 +32,6 @@ public class ClassicSwordsMain extends JavaPlugin{
 		registerConfig();	
 		messageSet();
 		startItemCheck();
-		//startBlockCheck();
 	}
 
 	public void onDisable() {
@@ -80,17 +81,9 @@ public class ClassicSwordsMain extends JavaPlugin{
 
 				for(Player p : Bukkit.getOnlinePlayers()) {
 					if(p.getInventory().getItemInMainHand() != null) {
-						
-//						if(ClassicSword.isCShield(p.getInventory().getItemInMainHand())) {
-//							if(p.isHandRaised()) {
-//								System.out.println("B");
-//								Storage.blockers.add(p);
-//								runBlock(p);
-//							}
-//						}
-						
+
 						if(CItemType.isSword(p.getInventory().getItemInMainHand().getType())){
-							
+
 							if(!ClassicSword.hasOpenInv(p)) {
 								if(!ClassicSword.isBlocking(p) && !Storage.swingers.contains(p) && ClassicSword.isCBlockShield(p.getInventory().getItemInMainHand())) {
 									p.getInventory().setItemInMainHand(ClassicSword.blockToShield(p.getInventory().getItemInMainHand(), CItemType.getType(ClassicSword.getCShieldShortName(p.getInventory().getItemInMainHand()))));
@@ -101,19 +94,12 @@ public class ClassicSwordsMain extends JavaPlugin{
 								ClassicSword.sendActionbar(p, "§eDurability: " + dur);
 							}
 						}
-//						if(p.isHandRaised() && Storage.swingers.contains(p) && ClassicSword.isCShield(p.getInventory().getItemInMainHand())) {
-//							p.getInventory().setItemInMainHand(ClassicSword.toBlockShield(p.getInventory().getItemInMainHand(), CItemType.getType(ClassicSword.getCShieldShortName(p.getInventory().getItemInMainHand()))));
-//							p.playSound(p.getLocation(), Sound.ENTITY_IRONGOLEM_STEP, 10.0F, 1.0F);
-//							ClassicSword.sendActionbar(p, "§aBlock hit!");
-//							Storage.swingers.remove(p);
-//
-//							blockToShieldTimer(p);
-//						}
+
 					}
 				}
 
 			}
-			//		}.runTaskTimerAsynchronously(this, 1*20, 1*20);
+
 		}.runTaskTimerAsynchronously(this, 1*1, 1*1);
 	}
 
@@ -125,7 +111,7 @@ public class ClassicSwordsMain extends JavaPlugin{
 			}
 		}, 10L);
 	}
-	
+
 	public static void runKB(Player p) {
 		Bukkit.getServer().getScheduler().runTaskLaterAsynchronously(plugin, new Runnable() {
 			@Override
@@ -134,8 +120,8 @@ public class ClassicSwordsMain extends JavaPlugin{
 			}
 		}, 20L);
 	}
-	
-	
+
+
 	public static void runBlock(Player p) {
 		Bukkit.getServer().getScheduler().runTaskLaterAsynchronously(plugin, new Runnable() {
 			@Override
@@ -144,7 +130,7 @@ public class ClassicSwordsMain extends JavaPlugin{
 			}
 		}, 20L);
 	}
-	
+
 	public static void runRecent(Player p, Player damaged) {
 		Bukkit.getServer().getScheduler().runTaskLaterAsynchronously(plugin, new Runnable() {
 			@Override
@@ -166,7 +152,7 @@ public class ClassicSwordsMain extends JavaPlugin{
 			}
 		}, 10L);
 	}
-	
+
 	public static void streakTimer(Player p) {
 		Bukkit.getServer().getScheduler().runTaskLaterAsynchronously(plugin, new Runnable() {
 			@Override
@@ -176,22 +162,6 @@ public class ClassicSwordsMain extends JavaPlugin{
 			}
 		}, 80L);
 	}
-
-
-	//	public void startBlockCheck() {
-	//		new BukkitRunnable(){
-	//			public void run() {
-	//				Storage.blockers.clear();
-	//				for(Player p : Bukkit.getOnlinePlayers()) {
-	//					if(p.getInventory().getItemInMainHand() != null && p.isBlocking()) {
-	//						Storage.blockers.add(p);
-	//					}
-	//				}
-	//
-	//			}
-	//			//		}.runTaskTimerAsynchronously(this, 1*20, 1*20);
-	//		}.runTaskTimerAsynchronously(this, 1*1, 1*1);
-	//	}
 
 
 
