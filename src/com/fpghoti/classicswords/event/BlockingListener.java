@@ -1,17 +1,12 @@
 package com.fpghoti.classicswords.event;
 
 import org.bukkit.Location;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageModifier;
-import org.bukkit.event.inventory.InventoryOpenEvent;
-
-import com.fpghoti.classicswords.ClassicSwordsMain;
-
 
 public class BlockingListener  implements Listener{
 

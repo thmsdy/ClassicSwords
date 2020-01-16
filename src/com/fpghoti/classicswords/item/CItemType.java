@@ -4,7 +4,7 @@ import org.bukkit.Material;
 
 import com.fpghoti.classicswords.util.Storage;
 
-import net.minecraft.server.v1_13_R2.NBTTagCompound;
+import net.minecraft.server.v1_15_R1.NBTTagCompound;
 
 public class CItemType {
 

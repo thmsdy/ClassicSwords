@@ -12,7 +12,7 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 
 import io.netty.util.internal.ConcurrentSet;
-import net.minecraft.server.v1_13_R2.NBTTagCompound;
+import net.minecraft.server.v1_15_R1.NBTTagCompound;
 
 public class Storage {
 	public static ConcurrentHashMap<String, Boolean> bools = new ConcurrentHashMap<>();

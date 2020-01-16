@@ -5,7 +5,7 @@ import java.lang.reflect.Constructor;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
-import org.bukkit.craftbukkit.v1_13_R2.inventory.CraftItemStack;
+import org.bukkit.craftbukkit.v1_15_R1.inventory.CraftItemStack;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
@@ -17,11 +17,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 import com.fpghoti.classicswords.item.CItemType.SwordType;
 import com.fpghoti.classicswords.util.Storage;
 
-import net.minecraft.server.v1_13_R2.NBTTagCompound;
-import net.minecraft.server.v1_13_R2.NBTTagDouble;
-import net.minecraft.server.v1_13_R2.NBTTagInt;
-import net.minecraft.server.v1_13_R2.NBTTagList;
-import net.minecraft.server.v1_13_R2.NBTTagString;
+import net.minecraft.server.v1_15_R1.NBTTagCompound;
+import net.minecraft.server.v1_15_R1.NBTTagList;
 
 public class ClassicSword {
 
@@ -52,28 +49,28 @@ public class ClassicSword {
 		meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
 		meta.setDisplayName(name);
 		csword.setItemMeta(meta);
-		net.minecraft.server.v1_13_R2.ItemStack nmsStack = CraftItemStack.asNMSCopy(csword);
+		net.minecraft.server.v1_15_R1.ItemStack nmsStack = CraftItemStack.asNMSCopy(csword);
 		NBTTagCompound compound = (nmsStack.hasTag()) ? nmsStack.getTag() : new NBTTagCompound();
 		NBTTagList modifiers = new NBTTagList();
 		NBTTagCompound damage = CItemType.getSwordType(type);
 
 		NBTTagCompound atspeed = new NBTTagCompound();
 
-		atspeed.set("AttributeName", new NBTTagString("generic.attackSpeed"));
-		atspeed.set("Name", new NBTTagString("generic.attackSpeed"));
-		atspeed.set("Amount", new NBTTagDouble(1021.6));
-		atspeed.set("Operation", new NBTTagInt(0));
-		atspeed.set("UUIDLeast", new NBTTagInt(894654));
-		atspeed.set("UUIDMost", new NBTTagInt(2872));
-		atspeed.set("Slot", new NBTTagString("mainhand"));
+		atspeed.set("AttributeName", SetAttributes.nbtString("generic.attackSpeed"));
+		atspeed.set("Name", SetAttributes.nbtString("generic.attackSpeed"));
+		atspeed.set("Amount", SetAttributes.nbtDouble(1021.6));
+		atspeed.set("Operation", SetAttributes.nbtInt(0));
+		atspeed.set("UUIDLeast", SetAttributes.nbtInt(894654));
+		atspeed.set("UUIDMost", SetAttributes.nbtInt(2872));
+		atspeed.set("Slot", SetAttributes.nbtString("mainhand"));
 
 		NBTTagCompound cstag = new NBTTagCompound();
 
 		//int dur = old.getType().getMaxDurability() - old.getDurability();
 		int dur = old.getType().getMaxDurability() - ((Damageable)old.getItemMeta()).getDamage();
 		
-		cstag.set("Durability", new NBTTagInt(dur));
-		cstag.set("Type", new NBTTagString(CItemType.getShortName(type)));
+		cstag.set("Durability", SetAttributes.nbtInt(dur));
+		cstag.set("Type", SetAttributes.nbtString(CItemType.getShortName(type)));
 
 		modifiers.add(damage);
 		modifiers.add(atspeed);
@@ -116,29 +113,29 @@ public class ClassicSword {
 			meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
 			meta.setDisplayName(name);
 			csword.setItemMeta(meta);
-			net.minecraft.server.v1_13_R2.ItemStack nmsStack = CraftItemStack.asNMSCopy(csword);
+			net.minecraft.server.v1_15_R1.ItemStack nmsStack = CraftItemStack.asNMSCopy(csword);
 			NBTTagCompound compound = (nmsStack.hasTag()) ? nmsStack.getTag() : new NBTTagCompound();
 			NBTTagList modifiers = new NBTTagList();
 			NBTTagCompound damage = CItemType.getSwordType(type);
 
 			NBTTagCompound atspeed = new NBTTagCompound();
 
-			atspeed.set("AttributeName", new NBTTagString("generic.attackSpeed"));
-			atspeed.set("Name", new NBTTagString("generic.attackSpeed"));
-			atspeed.set("Amount", new NBTTagDouble(1021.6));
-			atspeed.set("Operation", new NBTTagInt(0));
-			atspeed.set("UUIDLeast", new NBTTagInt(894654));
-			atspeed.set("UUIDMost", new NBTTagInt(2872));
-			atspeed.set("Slot", new NBTTagString("mainhand"));
+			atspeed.set("AttributeName", SetAttributes.nbtString("generic.attackSpeed"));
+			atspeed.set("Name", SetAttributes.nbtString("generic.attackSpeed"));
+			atspeed.set("Amount", SetAttributes.nbtDouble(1021.6));
+			atspeed.set("Operation", SetAttributes.nbtInt(0));
+			atspeed.set("UUIDLeast", SetAttributes.nbtInt(894654));
+			atspeed.set("UUIDMost", SetAttributes.nbtInt(2872));
+			atspeed.set("Slot", SetAttributes.nbtString("mainhand"));
 
 			NBTTagCompound cstag = new NBTTagCompound();
 
 			int dur = getCShieldDurability(old);
-			cstag.set("Durability", new NBTTagInt(dur));
-			cstag.set("Type", new NBTTagString(CItemType.getShortName(type)));
+			cstag.set("Durability", SetAttributes.nbtInt(dur));
+			cstag.set("Type", SetAttributes.nbtString(CItemType.getShortName(type)));
 
 			NBTTagCompound blocktag = new NBTTagCompound();
-			blocktag.set("BlockHit", new NBTTagString("BlockHit"));
+			blocktag.set("BlockHit", SetAttributes.nbtString("BlockHit"));
 
 			modifiers.add(damage);
 			modifiers.add(atspeed);
@@ -187,26 +184,26 @@ public class ClassicSword {
 			meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
 			meta.setDisplayName(name);
 			csword.setItemMeta(meta);
-			net.minecraft.server.v1_13_R2.ItemStack nmsStack = CraftItemStack.asNMSCopy(csword);
+			net.minecraft.server.v1_15_R1.ItemStack nmsStack = CraftItemStack.asNMSCopy(csword);
 			NBTTagCompound compound = (nmsStack.hasTag()) ? nmsStack.getTag() : new NBTTagCompound();
 			NBTTagList modifiers = new NBTTagList();
 			NBTTagCompound damage = CItemType.getSwordType(type);
 
 			NBTTagCompound atspeed = new NBTTagCompound();
 
-			atspeed.set("AttributeName", new NBTTagString("generic.attackSpeed"));
-			atspeed.set("Name", new NBTTagString("generic.attackSpeed"));
-			atspeed.set("Amount", new NBTTagDouble(1021.6));
-			atspeed.set("Operation", new NBTTagInt(0));
-			atspeed.set("UUIDLeast", new NBTTagInt(894654));
-			atspeed.set("UUIDMost", new NBTTagInt(2872));
-			atspeed.set("Slot", new NBTTagString("mainhand"));
+			atspeed.set("AttributeName", SetAttributes.nbtString("generic.attackSpeed"));
+			atspeed.set("Name", SetAttributes.nbtString("generic.attackSpeed"));
+			atspeed.set("Amount", SetAttributes.nbtDouble(1021.6));
+			atspeed.set("Operation", SetAttributes.nbtInt(0));
+			atspeed.set("UUIDLeast", SetAttributes.nbtInt(894654));
+			atspeed.set("UUIDMost", SetAttributes.nbtInt(2872));
+			atspeed.set("Slot", SetAttributes.nbtString("mainhand"));
 
 			NBTTagCompound cstag = new NBTTagCompound();
 
 			int dur = getCShieldDurability(old);
-			cstag.set("Durability", new NBTTagInt(dur));
-			cstag.set("Type", new NBTTagString(CItemType.getShortName(type)));
+			cstag.set("Durability", SetAttributes.nbtInt(dur));
+			cstag.set("Type", SetAttributes.nbtString(CItemType.getShortName(type)));
 
 
 			modifiers.add(damage);
@@ -252,20 +249,20 @@ public class ClassicSword {
 		meta.setUnbreakable(false);
 		meta.setDisplayName(name);
 		csword.setItemMeta(meta);
-		net.minecraft.server.v1_13_R2.ItemStack nmsStack = CraftItemStack.asNMSCopy(csword);
+		net.minecraft.server.v1_15_R1.ItemStack nmsStack = CraftItemStack.asNMSCopy(csword);
 		NBTTagCompound compound = (nmsStack.hasTag()) ? nmsStack.getTag() : new NBTTagCompound();
 		NBTTagList modifiers = new NBTTagList();
 		NBTTagCompound damage = CItemType.getSwordType(type);
 
 		NBTTagCompound atspeed = new NBTTagCompound();
 
-		atspeed.set("AttributeName", new NBTTagString("generic.attackSpeed"));
-		atspeed.set("Name", new NBTTagString("generic.attackSpeed"));
-		atspeed.set("Amount", new NBTTagDouble(1021.6));
-		atspeed.set("Operation", new NBTTagInt(0));
-		atspeed.set("UUIDLeast", new NBTTagInt(894654));
-		atspeed.set("UUIDMost", new NBTTagInt(2872));
-		atspeed.set("Slot", new NBTTagString("mainhand"));
+		atspeed.set("AttributeName", SetAttributes.nbtString("generic.attackSpeed"));
+		atspeed.set("Name", SetAttributes.nbtString("generic.attackSpeed"));
+		atspeed.set("Amount", SetAttributes.nbtDouble(1021.6));
+		atspeed.set("Operation", SetAttributes.nbtInt(0));
+		atspeed.set("UUIDLeast", SetAttributes.nbtInt(894654));
+		atspeed.set("UUIDMost", SetAttributes.nbtInt(2872));
+		atspeed.set("Slot", SetAttributes.nbtString("mainhand"));
 
 		NBTTagCompound cstag = new NBTTagCompound();
 
@@ -290,7 +287,7 @@ public class ClassicSword {
 		if(item.getType() != Material.SHIELD) {
 			return false;
 		}
-		net.minecraft.server.v1_13_R2.ItemStack nms = CraftItemStack.asNMSCopy(item);
+		net.minecraft.server.v1_15_R1.ItemStack nms = CraftItemStack.asNMSCopy(item);
 		if(!nms.hasTag() || nms.getTag() == null) {
 			return false;
 		}
@@ -302,7 +299,7 @@ public class ClassicSword {
 	}
 
 	public static Boolean isCBlockShield(ItemStack item) {
-		net.minecraft.server.v1_13_R2.ItemStack nms = CraftItemStack.asNMSCopy(item);
+		net.minecraft.server.v1_15_R1.ItemStack nms = CraftItemStack.asNMSCopy(item);
 		return nms.getTag() != null && isCShield(item) && nms.getTag().hasKey("ClassicSwords");
 	}
 
@@ -314,7 +311,7 @@ public class ClassicSword {
 		if(!(item.getType() == Material.WOODEN_SWORD || item.getType() == Material.STONE_SWORD ||item.getType() == Material.IRON_SWORD || item.getType() == Material.GOLDEN_SWORD || item.getType() == Material.DIAMOND_SWORD)) {
 			return false;
 		}
-		net.minecraft.server.v1_13_R2.ItemStack nms = CraftItemStack.asNMSCopy(item);
+		net.minecraft.server.v1_15_R1.ItemStack nms = CraftItemStack.asNMSCopy(item);
 		if(!nms.hasTag() || nms.getTag() == null) {
 			return false;
 		}
@@ -398,7 +395,7 @@ public class ClassicSword {
 			}
 			if(!skip) {
 				NBTTagCompound cstag = getCSTag(item);
-				cstag.set("Durability", new NBTTagInt(dur));
+				cstag.set("Durability", SetAttributes.nbtInt(dur));
 				p.getInventory().setItemInMainHand(updateCSTag(item, cstag));
 			}
 		}
@@ -408,7 +405,7 @@ public class ClassicSword {
 		if(!isCItem(item)) {
 			return null;
 		}else {
-			net.minecraft.server.v1_13_R2.ItemStack nms = CraftItemStack.asNMSCopy(item);
+			net.minecraft.server.v1_15_R1.ItemStack nms = CraftItemStack.asNMSCopy(item);
 			NBTTagCompound cstag = (NBTTagCompound) nms.getTag().get("ClassicSwords");
 			return cstag;
 		}
@@ -416,7 +413,7 @@ public class ClassicSword {
 
 	public static ItemStack updateCSTag(ItemStack item, NBTTagCompound tag) {
 		if(isCItem(item)) {
-			net.minecraft.server.v1_13_R2.ItemStack nms = CraftItemStack.asNMSCopy(item);
+			net.minecraft.server.v1_15_R1.ItemStack nms = CraftItemStack.asNMSCopy(item);
 			nms.getTag().set("ClassicSwords", tag);
 			return CraftItemStack.asBukkitCopy(nms);
 		}else {
