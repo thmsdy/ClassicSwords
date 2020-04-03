@@ -14,6 +14,8 @@ import org.bukkit.entity.Player;
 import io.netty.util.internal.ConcurrentSet;
 import net.minecraft.server.v1_15_R1.NBTTagCompound;
 
+// TODO rework plugin to get rid of this mess
+
 public class Storage {
 	public static ConcurrentHashMap<String, Boolean> bools = new ConcurrentHashMap<>();
 	public static HashMap<String, NBTTagCompound> damagetag = new HashMap<>();
@@ -29,4 +31,5 @@ public class Storage {
 	public static ConcurrentSet<Player> kb = new ConcurrentSet<>();
 	public static ConcurrentSet<Player> great = new ConcurrentSet<>();
 	public static ConcurrentSet<Player> perfect = new ConcurrentSet<>();
+	public static ConcurrentSet<Player> usingPack = new ConcurrentSet<>();
 }

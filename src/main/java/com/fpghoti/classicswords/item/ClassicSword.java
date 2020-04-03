@@ -3,6 +3,7 @@ package com.fpghoti.classicswords.item;
 import java.lang.reflect.Constructor;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.craftbukkit.v1_15_R1.inventory.CraftItemStack;
@@ -430,11 +431,11 @@ public class ClassicSword {
 		int dur = ClassicSword.getCShieldDurability(item);
 		dur = dur - amount;
 		if(dur <= 0) {
-			sendActionbar(p, "§eDurability: 0");
+			sendActionbar(p, ChatColor.YELLOW + "Durability: 0");
 			breakHeldItem(p);
 		}else {
 			if(isCItem(item)) {
-				sendActionbar(p, "§eDurability: " + dur);
+				sendActionbar(p, ChatColor.YELLOW + "Durability: " + dur);
 				setCShieldDurability(p, item, dur);
 			}
 		}

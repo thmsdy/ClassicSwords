@@ -1,4 +1,4 @@
-package com.fpghoti.classicswords.event;
+package com.fpghoti.classicswords.listener;
 
 import org.bukkit.Bukkit;
 import org.bukkit.attribute.Attribute;
@@ -11,6 +11,7 @@ import org.bukkit.event.entity.EntityRegainHealthEvent;
 
 import com.fpghoti.classicswords.ClassicSwordsMain;
 import com.fpghoti.classicswords.util.Storage;
+import com.fpghoti.classicswords.util.Util;
 
 public class RegenListener implements Listener{
 
@@ -23,6 +24,9 @@ public class RegenListener implements Listener{
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onRegen(EntityRegainHealthEvent event){
 		if(event.getEntityType() == EntityType.PLAYER || event.getRegainReason() == EntityRegainHealthEvent.RegainReason.SATIATED) {
+			if(!Util.usingPack((Player) event.getEntity())) {
+				return;
+			}
 			event.setCancelled(true);
 			Player p = (Player) event.getEntity();
 			double max = p.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue();

@@ -5,18 +5,18 @@ import java.util.UUID;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
-public class Functions {
+public class Util {
+	
+	
 
-	public Player playerGet(String uuid){
+	public static Player playerGet(String uuid){
 		UUID id = UUID.fromString(uuid);
 		Player p = Bukkit.getPlayer(id);
 		return p;
 	}
 	
-	public Boolean cModeEnabled(Player p) {
-		Boolean enabled = false;
-		//TO DO Work on resource pack detection
-		return enabled;
+	public static Boolean usingPack(Player p) {
+		return Storage.usingPack.contains(p);
 	}
 
 	public static Player getEP(String playername){

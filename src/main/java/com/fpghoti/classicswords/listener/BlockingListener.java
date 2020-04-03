@@ -1,4 +1,4 @@
-package com.fpghoti.classicswords.event;
+package com.fpghoti.classicswords.listener;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -8,6 +8,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageModifier;
 
+import com.fpghoti.classicswords.util.Util;
+
 public class BlockingListener  implements Listener{
 
 	@SuppressWarnings("deprecation")
@@ -16,6 +18,9 @@ public class BlockingListener  implements Listener{
 		if(event.getEntity() instanceof Player) {
 
 			Player p = (Player) event.getEntity();
+			if(!Util.usingPack(p)) {
+				return;
+			}
 			if(p.isHandRaised() || p.isBlocking()){
 				double newdamage = event.getDamage() * 0.5;
 				if(newdamage < 0) {
