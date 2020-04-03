@@ -1,6 +1,6 @@
 main: com.fpghoti.classicswords.ClassicSwordsMain
-version: BETA-1.0
-api-version: 1.13
+version: ${project.version}
+api-version: 1.15
 name: ClassicSwords
 descripion: Bring back the old combat!
 commands:

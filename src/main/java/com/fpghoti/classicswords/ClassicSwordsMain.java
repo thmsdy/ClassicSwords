@@ -10,14 +10,17 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import com.fpghoti.classicswords.commands.CSwordCommand;
-import com.fpghoti.classicswords.event.BlockingListener;
-import com.fpghoti.classicswords.event.InventoryListener;
-import com.fpghoti.classicswords.event.RegenListener;
-import com.fpghoti.classicswords.event.SwingListener;
 import com.fpghoti.classicswords.item.CItemType;
 import com.fpghoti.classicswords.item.ClassicSword;
 import com.fpghoti.classicswords.item.SetAttributes;
+import com.fpghoti.classicswords.listener.BlockingListener;
+import com.fpghoti.classicswords.listener.InventoryListener;
+import com.fpghoti.classicswords.listener.PlayerListener;
+import com.fpghoti.classicswords.listener.RegenListener;
+import com.fpghoti.classicswords.listener.SwingListener;
 import com.fpghoti.classicswords.util.Storage;
+
+import net.md_5.bungee.api.ChatColor;
 
 /** For 1.13 */
 
@@ -63,6 +66,7 @@ public class ClassicSwordsMain extends JavaPlugin{
 		pm.registerEvents(ie, this);
 		pm.registerEvents(new BlockingListener(), this);
 		pm.registerEvents(new RegenListener(this), this);
+		pm.registerEvents(new PlayerListener(), this);
 	}
 	FileConfiguration config = this.getConfig();
 
@@ -91,7 +95,7 @@ public class ClassicSwordsMain extends JavaPlugin{
 								ItemStack newitem = ClassicSword.toShield(p.getInventory().getItemInMainHand(), CItemType.getSwordType(p.getInventory().getItemInMainHand().getType()));
 								Integer dur = ClassicSword.getCShieldDurability(newitem);
 								p.getInventory().setItemInMainHand(newitem);
-								ClassicSword.sendActionbar(p, "§eDurability: " + dur);
+								ClassicSword.sendActionbar(p, ChatColor.YELLOW + "Durability: " + dur);
 							}
 						}
 

@@ -1,4 +1,4 @@
-package com.fpghoti.classicswords.event;
+package com.fpghoti.classicswords.listener;
 
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
@@ -17,6 +17,7 @@ import org.bukkit.inventory.ItemStack;
 import com.fpghoti.classicswords.item.CItemType;
 import com.fpghoti.classicswords.item.ClassicSword;
 import com.fpghoti.classicswords.util.Storage;
+import com.fpghoti.classicswords.util.Util;
 
 public class InventoryListener implements Listener{
 
@@ -30,7 +31,10 @@ public class InventoryListener implements Listener{
 
 	@EventHandler
 	public void onInvClose(InventoryCloseEvent event){
-		if(event.getPlayer() != null){
+		if(event.getPlayer() != null && event.getPlayer() instanceof Player){
+			if(!Util.usingPack((Player)event.getPlayer())) {
+				return;
+			}
 			Storage.inInv.remove((Player)event.getPlayer());
 			ClassicSword.toShieldInv(((Player)event.getPlayer()).getInventory());
 			ClassicSword.blockToShieldInv(((Player)event.getPlayer()).getInventory());
@@ -41,6 +45,9 @@ public class InventoryListener implements Listener{
 	public void onExp(PlayerExpChangeEvent event){
 		if(event.getPlayer() != null){
 			Player p = event.getPlayer();
+			if(!Util.usingPack(p)) {
+				return;
+			}
 			if(ClassicSword.isCShield(p.getInventory().getItemInMainHand())) {
 				ItemStack csword = p.getInventory().getItemInMainHand();
 				if(csword.containsEnchantment(Enchantment.MENDING)) {
@@ -67,6 +74,9 @@ public class InventoryListener implements Listener{
 	@EventHandler
 	public void onInvClick(InventoryClickEvent event){
 		Player p =  (Player) event.getWhoClicked();
+		if(!Util.usingPack(p)) {
+			return;
+		}
 		if(event.getInventory() != null && p != null){
 			if(!event.isShiftClick()) {
 				ClassicSword.toSwordInv(p.getInventory());
@@ -85,12 +95,21 @@ public class InventoryListener implements Listener{
 	}
 
 	public static void handleDisconnect(Player p) {
+		if(!Util.usingPack(p)) {
+			return;
+		}
 		Storage.inInv.remove(p);
 	}
 
 
 	@EventHandler
 	public void onItemClick(InventoryDragEvent event){
+		if(event.getWhoClicked() instanceof Player) {
+			Player p = (Player)event.getWhoClicked();
+			if(!Util.usingPack(p)) {
+				return;
+			}
+		}
 		if(event.getClass() != null){
 			if(ClassicSword.isCShield(event.getCursor())) {
 				ItemStack newsword = ClassicSword.toSword(event.getCursor(), CItemType.getType(ClassicSword.getCShieldShortName(event.getCursor())));
@@ -102,6 +121,9 @@ public class InventoryListener implements Listener{
 
 	@EventHandler
 	public void onHold(PlayerItemHeldEvent event){
+		if(!Util.usingPack(event.getPlayer())) {
+			return;
+		}
 		if(event.getPlayer() != null && ClassicSword.isCShield(event.getPlayer().getInventory().getItem(event.getNewSlot()))){
 			Integer dur = ClassicSword.getCShieldDurability(event.getPlayer().getInventory().getItem(event.getNewSlot()));
 			ClassicSword.sendActionbar(event.getPlayer(), "§eDurability: " + dur);
